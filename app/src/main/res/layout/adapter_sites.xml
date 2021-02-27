@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center|center_vertical"
+    android:orientation="horizontal"
+    tools:context=".view.activity.StartActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivIcSiteAdapter"
+        style="@style/icon_spinner"
+        tools:src="@drawable/mco"
+        tools:viewBindingIgnore="true" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvNameSiteAdapter"
+        style="@style/text_spinner"
+        tools:text="@string/tools_text_short"
+        tools:viewBindingIgnore="true" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

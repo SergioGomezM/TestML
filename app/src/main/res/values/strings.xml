@@ -1,0 +1,27 @@
+<resources>
+    <!--app-->
+    <string name="app_name">TestML</string>
+
+    <!--search-->
+    <string name="search_label">TestML</string>
+    <string name="search_hint">Busca productos de MercadoLibre</string>
+
+    <!--tools-->
+    <string name="tools_text_short">texto de prueba</string>
+    <string name="tools_text_half">texto de prueba un poco mas largo que el anterior</string>
+    <string name="tools_text_long">Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+        archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde
+        el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido
+        usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos
+        especimen.
+    </string>
+
+    <!--alert-->
+    <string name="alert_title_other">upp.. Algo a ocurrido</string>
+    <string name="alert_title_internet">upp.. Algo a ocurrido</string>
+    <string name="alert_title_local">upp.. Algo a ocurrido</string>
+    <string name="alert_message_other">Algo le ha ocurrido a la aplicación por favor reiniciarla</string>
+    <string name="alert_message_internet">Valida tu conexión a internet</string>
+    <string name="alert_message_local">Algo le ha ocurrido a la aplicación por favor reiniciarla</string>
+
+</resources>

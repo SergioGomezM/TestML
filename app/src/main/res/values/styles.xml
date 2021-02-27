@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--region Spinner-->
+    <style name="icon_spinner">
+        <item name="android:layout_height">@dimen/ic_size_spinner</item>
+        <item name="android:layout_width">@dimen/ic_size_spinner</item>
+        <item name="android:layout_margin">@dimen/ic_margin_spinner</item>
+    </style>
+
+    <style name="text_spinner">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_margin">@dimen/tx_padding</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+
+    <style name="content_spinner">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:padding">@dimen/padding_small</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+    <!--endregion-->
+
+    <!--region Items-->
+    <style name="query_photo_result">
+        <item name="android:layout_height">@dimen/photo_size_middle</item>
+        <item name="android:layout_width">@dimen/photo_size_middle</item>
+    </style>
+
+    <style name="query_title_result">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/tx_middle</item>
+        <item name="android:layout_marginTop">@dimen/margin_middle</item>
+        <item name="android:layout_marginStart">@dimen/margin_large</item>
+        <item name="android:layout_marginEnd">@dimen/margin_large</item>
+    </style>
+
+    <style name="query_price_result">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/tx_large</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginStart">@dimen/margin_large</item>
+        <item name="android:layout_marginEnd">@dimen/margin_large</item>
+    </style>
+    <!--endregion-->
+
+</resources>
