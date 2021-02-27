@@ -21,8 +21,8 @@
 
     <!--photo-->
     <dimen name="photo_size_small">50dp</dimen>
-    <dimen name="photo_size_middle">150dp</dimen>
-    <dimen name="photo_size_large">200dp</dimen>
+    <dimen name="photo_size_middle">120dp</dimen>
+    <dimen name="photo_size_large">300dp</dimen>
 
 
 </resources>

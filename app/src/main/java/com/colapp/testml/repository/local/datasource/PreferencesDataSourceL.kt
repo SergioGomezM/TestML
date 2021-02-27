@@ -10,13 +10,7 @@ import com.colapp.testml.repository.RepoConst.MESSAGE_EXCEPTION
 import com.colapp.testml.repository.ResRepository
 import com.colapp.testml.util.Log
 
-class PreferencesDataSourceL private constructor(sharedPreferences: SharedPreferences) {
-
-    private var sharedPreferences: SharedPreferences
-
-    init {
-        this.sharedPreferences = sharedPreferences
-    }
+class PreferencesDataSourceL private constructor(private var sharedPreferences: SharedPreferences) {
 
     companion object {
 

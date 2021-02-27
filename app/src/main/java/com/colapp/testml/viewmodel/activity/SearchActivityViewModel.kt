@@ -16,9 +16,10 @@ class SearchActivityViewModel: ViewModelPlus() {
 
     private lateinit var siteSelect: String
 
+    private var isSearchin = false
+
     val query = MutableLiveData<Query>()
     val alert = MutableLiveData<Alert>()
-    var isSearchin = false
 
     override fun onStart() {
         Log.info()

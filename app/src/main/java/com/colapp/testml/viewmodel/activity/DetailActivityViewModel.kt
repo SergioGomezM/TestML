@@ -1,5 +1,19 @@
 package com.colapp.testml.viewmodel.activity
 
-import androidx.lifecycle.ViewModel
+import com.colapp.testml.util.Log
+import com.colapp.testml.viewmodel.ViewModelPlus
 
-class DetailActivityViewModel: ViewModel()
+class DetailActivityViewModel: ViewModelPlus() {
+
+    override fun onStart() {
+        Log.info()
+        if (startVmPlus) {
+            startVmPlus = false
+        }
+    }
+
+    override fun onFinish() {
+        Log.info()
+    }
+
+}

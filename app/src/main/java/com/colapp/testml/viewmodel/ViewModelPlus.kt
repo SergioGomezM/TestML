@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.colapp.testml.repository.RepositoryFacade
 import com.colapp.testml.util.Log
 
-abstract class ViewModelPlus(): ViewModel() {
+abstract class ViewModelPlus : ViewModel() {
 
     var startVmPlus = true
 

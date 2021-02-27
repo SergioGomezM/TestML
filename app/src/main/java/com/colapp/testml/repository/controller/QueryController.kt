@@ -6,7 +6,6 @@ import com.colapp.testml.repository.RepoConst
 import com.colapp.testml.repository.remote.mercadolibre.datasource.QueryDataSourceR
 import com.colapp.testml.repository.ResRepository
 import com.colapp.testml.repository.controller.mapper.toQuery
-import com.colapp.testml.repository.local.datasource.PreferencesDataSourceL
 import com.colapp.testml.repository.remote.RemoteCallback
 import com.colapp.testml.repository.remote.mercadolibre.response.RemoteQuery
 import com.colapp.testml.util.Log

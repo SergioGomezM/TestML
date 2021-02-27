@@ -20,7 +20,7 @@ class SpinnerSiteAdapter(val context: Context, var data: List<Site>): BaseAdapte
     }
 
     override fun getItem(position: Int): Site {
-        return data.get(position)
+        return data[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -30,12 +30,12 @@ class SpinnerSiteAdapter(val context: Context, var data: List<Site>): BaseAdapte
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view = inflater.inflate(R.layout.adapter_sites, parent, false)
         val viewHolder = SiteHolder(view)
-        val id = data.get(position).id?.toLowerCase(Locale.ROOT)
+        val id = data[position].id?.toLowerCase(Locale.ROOT)
         val resource = context.resources.getIdentifier(id , "drawable", context.packageName)
 
         view.tag = viewHolder
 
-        viewHolder.name.text = data.get(position).name
+        viewHolder.name.text = data[position].name
         viewHolder.icon.setBackgroundResource(resource)
 
         return view

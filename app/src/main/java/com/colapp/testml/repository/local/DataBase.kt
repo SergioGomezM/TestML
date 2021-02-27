@@ -6,15 +6,11 @@ import com.colapp.testml.BuildConfig
 
 class DataBase private constructor(context: Context) {
 
-    var testMLdb: TestMLdb
-
-    init {
-        testMLdb = Room.databaseBuilder(
-            context.applicationContext,
-            TestMLdb::class.java,
-            BuildConfig.DATA_BASE_NAME
-        ).build()
-    }
+    var testMLdb = Room.databaseBuilder(
+        context.applicationContext,
+        TestMLdb::class.java,
+        BuildConfig.DATA_BASE_NAME
+    ).build()
 
     companion object {
 

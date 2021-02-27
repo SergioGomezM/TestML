@@ -5,11 +5,9 @@ import com.colapp.testml.repository.remote.mercadolibre.response.RemoteQuery
 import com.colapp.testml.repository.remote.mercadolibre.response.RemoteSite
 import retrofit2.Callback
 
-class ConsumerServicesML {
+class ConsumerServicesML private constructor() {
 
     private val clientML = Network.clientMercadoLibre()
-
-    private constructor()
 
     companion object {
 

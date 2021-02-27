@@ -23,7 +23,7 @@
     </style>
     <!--endregion-->
 
-    <!--region Items-->
+    <!--region Query-->
     <style name="query_photo_result">
         <item name="android:layout_height">@dimen/photo_size_middle</item>
         <item name="android:layout_width">@dimen/photo_size_middle</item>
@@ -35,7 +35,6 @@
         <item name="android:textSize">@dimen/tx_middle</item>
         <item name="android:layout_marginTop">@dimen/margin_middle</item>
         <item name="android:layout_marginStart">@dimen/margin_large</item>
-        <item name="android:layout_marginEnd">@dimen/margin_large</item>
     </style>
 
     <style name="query_price_result">
@@ -44,8 +43,35 @@
         <item name="android:textSize">@dimen/tx_large</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginStart">@dimen/margin_large</item>
-        <item name="android:layout_marginEnd">@dimen/margin_large</item>
     </style>
     <!--endregion-->
 
+    <!--region Item-->
+    <style name="item_photo_result">
+        <item name="android:layout_height">@dimen/photo_size_large</item>
+        <item name="android:layout_width">@dimen/photo_size_large</item>
+        <item name="android:layout_margin">@dimen/margin_large</item>
+    </style>
+
+    <style name="item_title_result">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/tx_middle</item>
+        <item name="android:layout_margin">@dimen/margin_large</item>
+    </style>
+
+    <style name="item_price_result">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/tx_large</item>
+        <item name="android:layout_margin">@dimen/margin_large</item>
+    </style>
+
+    <style name="item_seller_result">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/tx_middle</item>
+        <item name="android:layout_margin">@dimen/margin_large</item>
+    </style>
+    <!--region Item-->
 </resources>

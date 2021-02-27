@@ -35,8 +35,7 @@ class SearchActivity : AppCompatActivity() {
 
         runQuery(intent)
 
-        binding.rvQuery.setHasFixedSize(true)
-        binding.rvQuery.setLayoutManager(LinearLayoutManager(this))
+        binding.rvQuery.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -59,8 +58,7 @@ class SearchActivity : AppCompatActivity() {
             Log.info(it.value.toString())
             if (it.Results?.isNotEmpty() == true){
                 Log.info(it.value?.count_results.toString())
-                val sizePhoto = resources.getDimension(R.dimen.photo_size_middle)
-                val adapter = QueryAdapter(it.Results, sizePhoto)
+                val adapter = QueryAdapter(this, it.Results)
                 binding.rvQuery.adapter = adapter
             }
         }

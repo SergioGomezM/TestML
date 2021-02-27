@@ -24,4 +24,9 @@
     <string name="alert_message_internet">Valida tu conexión a internet</string>
     <string name="alert_message_local">Algo le ha ocurrido a la aplicación por favor reiniciarla</string>
 
+    <!--Detail-->
+    <string name="item_new">Producto Nuevo</string>
+    <string name="item_old">Producto Usado</string>
+
+
 </resources>

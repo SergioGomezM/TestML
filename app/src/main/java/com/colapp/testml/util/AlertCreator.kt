@@ -7,13 +7,13 @@ import com.colapp.testml.model.Alert
 import com.colapp.testml.repository.RepoConst.LOCAL_ORIGIN
 import com.colapp.testml.repository.RepoConst.REMOTE_ORIGIN
 
-class AlertCreator (val builder: AlertDialog.Builder, val res: Resources, val alert: Alert) {
+class AlertCreator (private val builder: AlertDialog.Builder, private val res: Resources, private val alert: Alert) {
 
        fun createAlert(): AlertDialog{
             return when (alert.source) {
                 LOCAL_ORIGIN -> internetAlert()
                 REMOTE_ORIGIN -> localAlert()
-                else -> OtherAlert()
+                else -> otherAlert()
             }
         }
 
@@ -29,7 +29,7 @@ class AlertCreator (val builder: AlertDialog.Builder, val res: Resources, val al
             return builder.create()
         }
 
-        private fun OtherAlert(): AlertDialog{
+        private fun otherAlert(): AlertDialog{
             builder.setTitle(res.getText(R.string.alert_title_other))
             builder.setMessage(res.getText(R.string.alert_message_other))
             return builder.create()

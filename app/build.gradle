@@ -6,6 +6,17 @@ plugins {
 }
 
 android {
+
+    signingConfigs {
+        release {
+            keyAlias 'colapp'
+            keyPassword 'Ser89gio.,'
+            storeFile file('F:\\Prueba\\key\\keyColapp.jks')
+            storePassword 'Che89cho.,'
+        }
+    }
+
+
     compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion rootProject.buildToolsVersion
 
@@ -80,7 +91,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
-    implementation "com.squareup.picasso:picasso:$picassoVersion"
+
+    implementation("io.coil-kt:coil:1.1.1")
 
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"

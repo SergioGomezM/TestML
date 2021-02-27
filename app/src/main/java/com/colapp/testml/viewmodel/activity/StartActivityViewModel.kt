@@ -14,10 +14,11 @@ class StartActivityViewModel : ViewModelPlus() {
     private var siteSelectedObserver = createSiteSelectedObserver()
     private var sitesObserver = createSitesObserver()
 
+    private var selectedSiteSkip = false
+
     val selectedSite = MutableLiveData<String>()
     val sites = MutableLiveData<List<Site>>()
     val alert = MutableLiveData<Alert>()
-    var selectedSiteSkip = false
 
     override fun onStart() {
         Log.info()

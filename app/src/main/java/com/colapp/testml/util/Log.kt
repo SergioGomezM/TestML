@@ -26,7 +26,7 @@ class Log {
             Log.e(TAG, "${getFunName("error")}->${msg}")
         }
 
-        fun getFunName(function: String): String{
+        private fun getFunName(function: String): String{
             var result = ""
             var nextLine = false
             Thread.currentThread().stackTrace.forEach{
@@ -34,7 +34,7 @@ class Log {
                     result = "${it.fileName}.${it.methodName}.line:${it.lineNumber}: "
                     nextLine = false
                 }
-                if(function.equals(it.methodName)){
+                if(function == it.methodName){
                     nextLine = true
                 }
             }
