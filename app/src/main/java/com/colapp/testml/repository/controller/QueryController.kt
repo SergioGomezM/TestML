@@ -34,7 +34,13 @@ class QueryController {
             override fun onResult(result: ResRepository<RemoteQuery>, response: Response<RemoteQuery>?) {
                 val res = ResRepository<Query>(result.origin)
                 if(result.errorCode == RepoConst.ERROR_CODE_OK){
-                    res.data = result.data?.toQuery()
+                    if (result.data?.results.isNullOrEmpty()){
+                        res.errorCode = RepoConst.ERROR_DATA_NOT_FOUND
+                        res.message = RepoConst.MESSAGE_DATA_NOT_FOUND
+                        Log.warn(res.message)
+                    }else{
+                        res.data = result.data?.toQuery()
+                    }
                 }else{
                     res.errorCode = result.errorCode
                     res.message = result.message

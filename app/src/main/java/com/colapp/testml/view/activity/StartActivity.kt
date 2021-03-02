@@ -2,6 +2,7 @@ package com.colapp.testml.view.activity
 
 import android.app.SearchManager
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -9,10 +10,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.colapp.testml.R
 import com.colapp.testml.databinding.ActivityStartBinding
 import com.colapp.testml.model.Alert
 import com.colapp.testml.model.Site
-import com.colapp.testml.util.AlertCreator
 import com.colapp.testml.view.adapter.SpinnerSiteAdapter
 import com.colapp.testml.viewmodel.activity.StartActivityViewModel
 
@@ -34,7 +35,7 @@ class StartActivity : AppCompatActivity() {
         model.sites.observe(this, observerSites())
         model.alert.observe(this, observerAlert())
 
-        binding.pbLoading.show()
+        binding.pbLoadingStart.show()
         binding.spSitesStart.onItemSelectedListener = onItemSelectedListener()
 
     }
@@ -42,10 +43,10 @@ class StartActivity : AppCompatActivity() {
     private fun onItemSelectedListener(): AdapterView.OnItemSelectedListener {
         return object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
             ) {
                 val idList: String = model.sites.value?.get(position)?.id ?: ""
                 model.saveSelectedSite(idList)
@@ -58,7 +59,7 @@ class StartActivity : AppCompatActivity() {
     private fun observerSites(): Observer<List<Site>> {
         return Observer<List<Site>> {
             if (it?.isNotEmpty() == true) {
-                binding.pbLoading.hide()
+                binding.pbLoadingStart.hide()
                 val adapter = SpinnerSiteAdapter(this, it)
                 binding.spSitesStart.adapter = adapter
             }
@@ -73,16 +74,24 @@ class StartActivity : AppCompatActivity() {
 
     private fun observerAlert(): Observer<Alert> {
         return Observer<Alert> {
-            val alert = AlertCreator(AlertDialog.Builder(this), resources, it)
-            alert.createAlert().show()
+            AlertDialog.Builder(this)
+                .setTitle(resources.getText(R.string.alert_title_internet))
+                .setMessage(resources.getText(R.string.alert_message_internet))
+                .setNeutralButton(resources.getText(R.string.alert_button_ok)) { dialog, id ->
+                }
+                .setPositiveButton(resources.getText(R.string.alert_button_internet)
+                ) { dialog, id ->
+                    model.getSites()
+                }
+                .show()
         }
     }
 
     private fun configSearch() {
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         val searchInfo = searchManager.getSearchableInfo(componentName)
-        binding.svSearch.setSearchableInfo(searchInfo)
-        binding.svSearch.setIconifiedByDefault(false)
+        binding.svSearchStart.setSearchableInfo(searchInfo)
+        binding.svSearchStart.setIconifiedByDefault(false)
     }
 
 }

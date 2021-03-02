@@ -3,7 +3,7 @@ package com.colapp.testml.repository.local.datasource
 import com.colapp.testml.model.Site
 import com.colapp.testml.repository.RepoConst
 import com.colapp.testml.repository.local.LocalCallback
-import com.colapp.testml.repository.RepoConst.DB_ERROR_DATA_NOT_FOUND
+import com.colapp.testml.repository.RepoConst.ERROR_DATA_NOT_FOUND
 import com.colapp.testml.repository.RepoConst.LOCAL_ORIGIN
 import com.colapp.testml.repository.RepoConst.MESSAGE_DATA_NOT_FOUND
 import com.colapp.testml.repository.ResRepository
@@ -39,7 +39,7 @@ class SitesDataSourceL private constructor() {
             try {
                 val resultDB = dataBase.siteDao().getSites().map { it.toSite() }
                 if (resultDB.isEmpty()){
-                    res.errorCode = DB_ERROR_DATA_NOT_FOUND
+                    res.errorCode = ERROR_DATA_NOT_FOUND
                     res.message = MESSAGE_DATA_NOT_FOUND
                 }else{
                     res.data = resultDB

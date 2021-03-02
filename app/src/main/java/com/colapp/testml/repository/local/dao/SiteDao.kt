@@ -11,7 +11,7 @@ interface SiteDao {
     @Query("SELECT * FROM site")
     fun getSites(): Array<LocalSite>
 
-    @Insert()
+    @Insert
     fun createSites(site: Array<LocalSite>)
 
 

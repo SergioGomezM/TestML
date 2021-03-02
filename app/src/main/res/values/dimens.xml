@@ -10,7 +10,7 @@
     <dimen name="margin_large">20dp</dimen>
 
     <!--text-->
-    <dimen name="tx_small">10sp</dimen>
+    <dimen name="tx_small">12sp</dimen>
     <dimen name="tx_middle">14sp</dimen>
     <dimen name="tx_large">18sp</dimen>
     <dimen name="tx_padding">5dp</dimen>
@@ -22,7 +22,7 @@
     <!--photo-->
     <dimen name="photo_size_small">50dp</dimen>
     <dimen name="photo_size_middle">120dp</dimen>
-    <dimen name="photo_size_large">300dp</dimen>
+    <dimen name="photo_size_large">200dp</dimen>
 
 
 </resources>

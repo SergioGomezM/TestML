@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clItem"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_large"
     tools:context=".view.activity.SearchActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivPhotoResultAdapter"
+        android:backgroundTint="@color/black"
         style="@style/query_photo_result"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,11 +33,25 @@
         android:id="@+id/tvPriceResultAdapter"
         style="@style/query_price_result"
         android:drawableStart="@drawable/ic_price"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPhotoResultAdapter"
+        android:lines="1"
+        app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ivPhotoResultAdapter"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleResultAdapter"
+        app:layout_constraintVertical_bias="0.25"
+        tools:text="@string/tools_text_short"
+        tools:viewBindingIgnore="true" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvStateResultAdapter"
+        style="@style/query_state_result"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPhotoResultAdapter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ivPhotoResultAdapter"
+        app:layout_constraintTop_toBottomOf="@+id/tvPriceResultAdapter"
         app:layout_constraintVertical_bias="0.25"
         tools:text="@string/tools_text_short"
         tools:viewBindingIgnore="true" />

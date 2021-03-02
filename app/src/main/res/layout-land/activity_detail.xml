@@ -9,16 +9,18 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivPhotoDetail"
         style="@style/item_photo_result"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        app:layout_constraintEnd_toStartOf="@id/rvAttributes"
+        app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:src="@drawable/ic_logo_text" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitleDetail"
         style="@style/item_title_result"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        app:layout_constraintEnd_toStartOf="@id/rvAttributes"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPhotoDetail"
         tools:text="@string/tools_text_half" />
@@ -27,34 +29,32 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvPriceDetail"
         style="@style/item_price_result"
+        android:layout_width="0dp"
         android:drawableStart="@drawable/ic_price"
-        app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvConditionDetail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleDetail"
-        app:layout_constraintVertical_bias="0.0"
         tools:text="@string/tools_text_short" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvConditionDetail"
         style="@style/item_state_result"
-        app:layout_constrainedWidth="true"
+        android:layout_width="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rvAttributes"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleDetail"
-        app:layout_constraintVertical_bias="0.0"
         tools:text="@string/tools_text_short" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAttributes"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_large"
-        app:layout_constrainedHeight="true"
+        app:layout_constraintStart_toEndOf="@+id/ivPhotoDetail"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPriceDetail" />
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

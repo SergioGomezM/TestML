@@ -15,13 +15,13 @@ class RepositoryFacade private constructor() {
 
     companion object {
 
-        private var mIntance: RepositoryFacade? = null
+        private var mInstance: RepositoryFacade? = null
 
         fun getInstance(): RepositoryFacade {
-            if (mIntance == null) {
-                mIntance = RepositoryFacade()
+            if (mInstance == null) {
+                mInstance = RepositoryFacade()
             }
-            return mIntance as RepositoryFacade
+            return mInstance as RepositoryFacade
         }
     }
 

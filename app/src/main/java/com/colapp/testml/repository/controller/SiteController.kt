@@ -3,6 +3,8 @@ package com.colapp.testml.repository.controller
 import androidx.lifecycle.MutableLiveData
 import com.colapp.testml.model.Site
 import com.colapp.testml.repository.RepoConst
+import com.colapp.testml.repository.RepoConst.ERROR_DATA_NOT_FOUND
+import com.colapp.testml.repository.RepoConst.MESSAGE_DATA_NOT_FOUND
 import com.colapp.testml.repository.local.LocalCallback
 import com.colapp.testml.repository.ResRepository
 import com.colapp.testml.repository.controller.mapper.toSite
@@ -37,6 +39,7 @@ class SiteController {
 
     }
 
+    //region public function
     fun getSelectedSite() {
         preferenceDataSourceL.getSelectedSite(object : LocalCallback<String> {
             override fun onResult(result: ResRepository<String>, response: Response<String>?) {
@@ -67,12 +70,13 @@ class SiteController {
                     sites.postValue(result)
                 } else {
                     getSitesRemote()
-                    Log.warn()
+                    Log.warn(result.message)
                 }
             }
         })
     }
 
+    //region private function
     private fun getSitesRemote() {
         sitesDataSourceR.getSites(object : RemoteCallback<List<RemoteSite>>() {
             override fun onResult(
@@ -81,9 +85,15 @@ class SiteController {
             ) {
                 val res = ResRepository<List<Site>>(result.origin)
                 if (result.errorCode == RepoConst.ERROR_CODE_OK) {
-                    result.data?.let {
-                        saveSite(it)
-                        res.data = it.map { list -> list.toSite() }
+                    if (result.data.isNullOrEmpty()){
+                        res.errorCode = ERROR_DATA_NOT_FOUND
+                        res.message = MESSAGE_DATA_NOT_FOUND
+                        Log.warn(res.message)
+                    }else{
+                        result.data?.let {
+                            saveSite(it)
+                            res.data = it.map { list -> list.toSite() }
+                        }
                     }
                 } else {
                     res.errorCode = result.errorCode
@@ -96,15 +106,16 @@ class SiteController {
     }
 
     private fun saveSite(res: List<RemoteSite>) {
-        val localsites = res.map { it.toSiteLocal() }
-        localsites.let {
-            sitesDataSourceL.createSites(localsites.toTypedArray(), object : LocalCallback<Unit> {
+        val localSites = res.map { it.toSiteLocal() }
+        localSites.let {
+            sitesDataSourceL.createSites(localSites.toTypedArray(), object : LocalCallback<Unit> {
                 override fun onResult(result: ResRepository<Unit>, response: Response<Unit>?) {
 
                 }
             })
         }
     }
+    //endregion
 }
 
 

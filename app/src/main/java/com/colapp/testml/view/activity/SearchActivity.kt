@@ -1,8 +1,11 @@
 package com.colapp.testml.view.activity
 
 import android.app.SearchManager
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +15,8 @@ import com.colapp.testml.R
 import com.colapp.testml.databinding.ActivitySearchBinding
 import com.colapp.testml.model.Alert
 import com.colapp.testml.model.Query
-import com.colapp.testml.util.AlertCreator
+import com.colapp.testml.repository.RepoConst.ERROR_DATA_NOT_FOUND
+import com.colapp.testml.repository.RepoConst.ERROR_REQUEST
 import com.colapp.testml.util.Log
 import com.colapp.testml.view.adapter.QueryAdapter
 import com.colapp.testml.viewmodel.activity.SearchActivityViewModel
@@ -22,6 +26,7 @@ class SearchActivity : AppCompatActivity() {
 
     private val model: SearchActivityViewModel by viewModels()
     private lateinit var binding: ActivitySearchBinding
+    private var query: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,42 +37,84 @@ class SearchActivity : AppCompatActivity() {
 
         model.query.observe(this, observerQuery())
         model.alert.observe(this, observerAlert())
+        model.isSearching.observe(this, observerSearching())
 
         runQuery(intent)
 
-        binding.rvQuery.layoutManager = LinearLayoutManager(this)
+        binding.rvQuerySearch.layoutManager = LinearLayoutManager(this)
+
+        configSearch()
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
-        intent?.let { runQuery(it) }
+        runQuery(intent)
     }
 
 
-    private fun runQuery(intent: Intent) {
-        if (Intent.ACTION_SEARCH == intent.action) {
-            intent.getStringExtra(SearchManager.QUERY)?.also {
-                Log.info(it)
-                model.getQueryBySite(it)
-            }
-        }
+    private fun runQuery(intent: Intent?) {
+            query = intent?.getStringExtra(SearchManager.QUERY)
+            query?.let { model.getQueryBySite(it) }
     }
 
     private fun observerQuery(): Observer<Query> {
         return Observer<Query> {
             Log.info(it.value.toString())
-            if (it.Results?.isNotEmpty() == true){
+            if (it.Results?.isNotEmpty() == true) {
                 Log.info(it.value?.count_results.toString())
-                val adapter = QueryAdapter(this, it.Results)
-                binding.rvQuery.adapter = adapter
+                val adapter = QueryAdapter(this, it.Results, resources)
+                binding.rvQuerySearch.adapter = adapter
             }
         }
     }
 
-    private fun observerAlert(): Observer<Alert>{
-        return Observer<Alert> {
-            val alert = AlertCreator(AlertDialog.Builder(this), resources, it)
-            alert.createAlert().show()
+    private fun observerSearching(): Observer<Boolean> {
+        return Observer<Boolean> {
+            if(it){
+                binding.pbLoadingSearch.show()
+                binding.rvQuerySearch.visibility = View.GONE
+            }else{
+                binding.pbLoadingSearch.hide()
+                binding.rvQuerySearch.visibility = View.VISIBLE
+            }
         }
+    }
+
+    private fun observerAlert(): Observer<Alert> {
+        return Observer<Alert> {
+            when (it.code) {
+                ERROR_DATA_NOT_FOUND -> createAlertDataNotFoundError()
+                ERROR_REQUEST -> createAlertInternetError()
+            }
+        }
+    }
+
+    private fun createAlertInternetError() {
+        AlertDialog.Builder(this)
+            .setTitle(resources.getText(R.string.alert_title_internet))
+            .setMessage(resources.getText(R.string.alert_message_internet))
+            .setNeutralButton(resources.getText(R.string.alert_button_ok)) { dialog, id ->
+            }
+            .setPositiveButton(resources.getText(R.string.alert_button_internet)) { dialog, id ->
+                query?.let { model.getQueryBySite(it) }
+            }
+            .show()
+    }
+
+    private fun createAlertDataNotFoundError() {
+        AlertDialog.Builder(this)
+            .setTitle(resources.getText(R.string.alert_title_data_not_found))
+            .setMessage(resources.getText(R.string.alert_message_data_not_found))
+            .setNeutralButton(resources.getText(R.string.alert_button_ok)) { dialog, id ->
+                model
+            }
+            .show()
+    }
+
+    private fun configSearch() {
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchInfo = searchManager.getSearchableInfo(componentName)
+        binding.svSearchSearch.setSearchableInfo(searchInfo)
+        binding.svSearchSearch.setIconifiedByDefault(false)
     }
 }

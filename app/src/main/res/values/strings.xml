@@ -17,16 +17,15 @@
     </string>
 
     <!--alert-->
-    <string name="alert_title_other">upp.. Algo a ocurrido</string>
-    <string name="alert_title_internet">upp.. Algo a ocurrido</string>
-    <string name="alert_title_local">upp.. Algo a ocurrido</string>
-    <string name="alert_message_other">Algo le ha ocurrido a la aplicación por favor reiniciarla</string>
+    <string name="alert_title_internet">¡Ups! Algo salió mal con el internet</string>
+    <string name="alert_title_data_not_found">¡Ups! Algo salió mal</string>
     <string name="alert_message_internet">Valida tu conexión a internet</string>
-    <string name="alert_message_local">Algo le ha ocurrido a la aplicación por favor reiniciarla</string>
+    <string name="alert_message_data_not_found">Intenta buscando otro producto</string>
+    <string name="alert_button_internet">Reintentar</string>
+    <string name="alert_button_ok">OK</string>
 
     <!--Detail-->
     <string name="item_new">Producto Nuevo</string>
     <string name="item_old">Producto Usado</string>
-
 
 </resources>

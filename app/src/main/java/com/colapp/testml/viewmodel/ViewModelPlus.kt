@@ -15,8 +15,8 @@ abstract class ViewModelPlus : ViewModel() {
     abstract fun onFinish()
 
     override fun onCleared() {
-        onFinish()
         Log.info()
+        onFinish()
         super.onCleared()
     }
 }
